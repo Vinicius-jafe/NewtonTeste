@@ -1,120 +1,76 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alerta de Segurança | Newton Paiva</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-            border-top: 10px solid #6a1b9a;
-        }
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-            color: #6a1b9a;
-            margin-bottom: 20px;
-        }
-        .warning-box {
-            background-color: #ffebee;
-            color: #c62828;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            font-weight: bold;
-            border: 1px solid #ffcdd2;
-        }
-        h1 {
-            color: #d32f2f;
-            font-size: 22px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        p {
-            color: #444;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .counter-section {
-            background: #f3e5f5;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px dashed #6a1b9a;
-            margin-top: 20px;
-        }
-        .counter-text {
-            font-size: 14px;
-            color: #6a1b9a;
-            font-weight: bold;
-        }
-        .footer-note {
-            font-size: 11px;
-            color: #999;
-            margin-top: 30px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Simulação de Segurança</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      text-align: center;
+      padding: 50px;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: inline-block;
+      max-width: 500px;
+    }
+    h1 {
+      color: #e53935;
+    }
+    p {
+      font-size: 16px;
+      color: #333;
+    }
+    .small {
+      font-size: 13px;
+      color: gray;
+      margin-top: 20px;
+    }
+    button {
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="card">
-    <div class="logo">Newton Paiva | Wyden</div>
+  <div class="box">
+    <h1>⚠️ Simulação de Phishing</h1>
     
-    <div class="warning-box">
-        ⚠️ ATENÇÃO: TESTE ACADÊMICO EM CURSO
-    </div>
+    <p>Você acabou de clicar em um link de teste de segurança.</p>
 
-    <h1>Você caiu em um Phishing!</h1>
-    
-    <p>
-        Fique tranquilo, este é um projeto da disciplina de <strong>Segurança Cibernética</strong>. 
-        O objetivo é demonstrar como links falsos podem parecer oficiais.
+    <p><b>Isso faz parte de uma simulação educativa</b> para demonstrar como ataques de phishing funcionam.</p>
+
+    <p>Fique atento a links suspeitos, remetentes desconhecidos e pedidos de informações sensíveis.</p>
+
+    <button onclick="registrarClique()">Entendi</button>
+
+    <p class="small">
+      Este é apenas um teste. Nenhuma informação sensível foi coletada.
     </p>
+  </div>
 
-    <div class="counter-section">
-        <span class="counter-text">📊 Total de alunos que clicaram neste teste:</span>
-        <br><br>
-        <img src="https://hits.dwyl.com/newton-paiva-oficial/portal-alunoo-seguranca-2026.svg" alt="Contador de Acessos">
-    </div>
+  <script>
+    function registrarClique() {
+      const email = "teste@exemplo.com"; // você pode alterar dinamicamente
+      const ua = navigator.userAgent;
 
-    <div class="footer-note">
-        Nenhum dado pessoal foi coletado.
-    </div>
-</div>
+      fetch("https://script.google.com/macros/s/AKfycbzPpma8YbprGZbwe95yxrd2XABS79YD4IT_4wzQuN8xuOGBnh88khqZlsHYUS0AmWBo/exec?email=" 
+        + encodeURIComponent(email) + 
+        "&ua=" + encodeURIComponent(ua));
 
-<script>
-(function() {
-    // evita registrar mais de 1 vez por usuário
-    if (localStorage.getItem("phishing_registrado")) return;
-    localStorage.setItem("phishing_registrado", "true");
-
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id") || "anonimo";
-
-    const data = {
-        id: id,
-        ua: navigator.userAgent,
-        ref: document.referrer
-    };
-
-    fetch("https://script.google.com/macros/s/AKfycbxEwtIJjE8LKbTDQWxP6tKs95dlDj8jmKiN-LyGGIXIkBniwyxkfl5mAXXgj1zlSzAbug/exec?" + new URLSearchParams(data))
-        .catch(err => console.log("Erro ao enviar:", err));
-})();
-</script>
+      alert("Obrigado! Clique registrado.");
+    }
+  </script>
 
 </body>
 </html>
