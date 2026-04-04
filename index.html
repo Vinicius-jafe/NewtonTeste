@@ -68,10 +68,7 @@
       return params.get("email") || "desconhecido";
     }
 
-    // 🔹 Mostra o email na tela (opcional)
-    const emailCapturado = getEmailFromURL();
-    document.getElementById("emailExibido").innerText = 
-      "Email identificado: " + emailCapturado;
+
 
     // 🔹 Envia pro Google Sheets
     function registrarClique() {
@@ -81,8 +78,6 @@
       fetch("https://script.google.com/macros/s/AKfycbzPpma8YbprGZbwe95yxrd2XABS79YD4IT_4wzQuN8xuOGBnh88khqZlsHYUS0AmWBo/exec?email=" 
         + encodeURIComponent(email) + 
         "&ua=" + encodeURIComponent(ua));
-
-      alert("Obrigado! Clique registrado.");
     }
 
     // 🔥 OPCIONAL: registrar automaticamente ao abrir a página
